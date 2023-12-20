@@ -1,4 +1,17 @@
+body {
+    background-color: black;
+}
 
+.section {
+    opacity: 0.6;
+    transform: translateY(20px);
+    transition: opacity 1s, transform 1s;
+}
+
+.section.image-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 #home{
     display: flex;
     flex-direction: column;
@@ -116,9 +129,9 @@ nav ul li a:hover::after{
     margin-top: 0;
     padding-top: 0;
     text-align: center;
-    height: 100vh;
+    height: 75vh;
     width: 100%;
-    background-image: url(images/bg.jpg);
+    background-image: url(images/darkblue.jpg);
     background-repeat: none;
     background-size: cover;
     background-position: center;
@@ -130,32 +143,70 @@ nav ul li a:hover::after{
 #about h1 {
     /*margin-top: 4%;*/
     position: relative;
-    color: black;
+    color: grey;
+    font-family: 'NeueMontreal';
+    opacity: 0;
+    animation: fadeInUp 1s ease-in-out forwards;
 }
 
+
 #about h1::after {
+    opacity: 1;
     content: '';
     display: block;
     margin: 0 auto; /* centers line horizontally under*/
     width: 60%; /*length of line*/
     height: 2px;
-    background-color: black;
+    background-color: grey;
     margin-top: 7px;
 }
 
 #about p{
+    margin-top: 0;
     color: black;
+    animation: fadeInUp 1s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /*Projects*/
 #projects {
     padding: 50px 0;
     backdrop-filter: blur(50px);
-    
+    width: 100%;
+    height: 75vh;
 }
 .sub-title{
+    animation: fadeLeftRight 1s ease-in-out forwards;
+    padding-left: 10px;
+    font-family: 'NeueMontreal';
     color: silver;
 }
+.sub-title::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: width 0.75s ease;
+}
+
+.sub-title:hover::after {
+    width: 100%;
+}
+
 .work-list{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -173,4 +224,20 @@ nav ul li a:hover::after{
     border-radius: 10px;
     display: block;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.work:hover img {
+    transform: scale(1.1);
+}
+
+@keyframes fadeLeftRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

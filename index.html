@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div id="home"> <!--equivalent of header -->
+    <div class="section" id="home"> <!--equivalent of header -->
         <div id="header"> <!--equivalent of container -->
             <nav>
                 <h1>claire phan</h1>
@@ -28,10 +28,28 @@
     </div>
 
     <!-- About -->
-    <div id="about">
+    <div class="section" id="about">
         <h1>About Me</h1>
         <p>Enter paragraph about myself.</p>
     </div>
+
+    <script>
+        const images = document.querySelectorAll('.section');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('image-visible');
+                } else {
+                    entry.target.classList.remove('image-visible');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        images.forEach(image => {
+            observer.observe(image);
+        });
+    </script>
 
     <!-- Projects -->
     <div id="projects">
