@@ -28,16 +28,6 @@ body {
     padding-bottom: 0;
 }
 
-.header{
-    padding: 10px 10%;
-    /*
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 15px;
-    */
-}
-
 nav {
     display: flex; /* made items side by side*/
     align-items: center;
@@ -131,19 +121,22 @@ nav ul li a:hover::after{
     text-align: center;
     height: 75vh;
     width: 100%;
+    /*
     background-image: url(images/darkblue.jpg);
     background-repeat: none;
     background-size: cover;
-    background-position: center;
+    background-position: center; */
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #about h1 {
     /*margin-top: 4%;*/
     position: relative;
-    color: grey;
+    color: rgba(255, 255, 255, 0.667);
     font-family: 'NeueMontreal';
     opacity: 0;
     animation: fadeInUp 1s ease-in-out forwards;
@@ -159,13 +152,31 @@ nav ul li a:hover::after{
     height: 2px;
     background-color: grey;
     margin-top: 7px;
+    transition: 0.6s ease-in;
 }
 
+#about.image-visible h1::after{
+    transition: 0.7s;
+    width: 100%;
+}
+
+
 #about p{
-    margin-top: 0;
-    color: black;
+    margin-top: 20px;
+    max-width: 600px;
+    color: rgba(255, 255, 255, 0.667);
     animation: fadeInUp 1s ease-in-out forwards;
     animation-delay: 0.5s;
+    font-size: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.2);
+}
+
+#about p:hover {
+    transition: 0.7s ease-in-out forwards;
+    box-shadow: 0 0 10px 15px rgba(255, 255, 0, 0.2);
 }
 
 @keyframes fadeInUp {
@@ -186,55 +197,79 @@ nav ul li a:hover::after{
     width: 100%;
     height: 75vh;
 }
+
 .sub-title{
     animation: fadeLeftRight 1s ease-in-out forwards;
     padding-left: 10px;
     font-family: 'NeueMontreal';
     color: silver;
 }
+
 .sub-title::after {
     content: '';
-    width: 0;
-    height: 2px;
-    background: #ff004f;
     position: absolute;
+    width: 15%;
+    height: 2px;
+    margin: 0 auto;
+    background: #ff004f;
     left: 0;
     bottom: -6px;
-    transition: width 0.75s ease;
+    transition: width 0.9s ease-out;
 }
 
 .sub-title:hover::after {
     width: 100%;
 }
 
-.work-list{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 40px;
-    margin-top: 50px;
-}
+
 .work {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
     border-radius: 10px;
     position: relative;
     overflow: hidden;
     height: 300px;
+    margin-bottom: 150px;
 }
+
 .work img{
+    margin: 25%;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 10px;
     width: 100%;
+    height: 70vh;
     border-radius: 10px;
     display: block;
     object-fit: cover;
     transition: transform 0.3s ease;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.2);
 }
 
 .work:hover img {
     transform: scale(1.1);
 }
 
+.caption h1{
+    color: white;
+}
+
+.caption p {
+    font-size: 20px;
+    color: white;
+}
+
+#comingsoon {
+    width: 60%;
+}
+
+
 @keyframes fadeLeftRight {
     from {
-        opacity: 0;
-        transform: translateX(20px);
+        opacity: 0.2;
+        transform: translateX(30px);
     }
     to {
         opacity: 1;
